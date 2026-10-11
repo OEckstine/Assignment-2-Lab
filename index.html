@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Follow the Money: The 2024 Senate Races</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:wght@400;700&family=Playfair+Display+SC:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  </head>
+
+  <body>
+    <header class="hero">
+      <h1>Follow the Money</h1>
+      <p class="subtitle"><span>The 2024 Senate Races</span></p>
+      <p class="byline">By: Olivia Eckstine</p>
+
+      <div class="hero-image">
+        <img
+          src="capitol.png"
+          alt="The U.S. Capitol dome over a blue and red background"
+        />
+      </div>
+    </header>
+
+    <main>
+      <hr class="divider" />
+
+      <section class="chart-card">
+        <div class="controls">
+          <div class="toggle" id="metricToggle">
+            <button data-metric="totalRaised" class="active">
+              Total raised
+            </button>
+            <button data-metric="individuals">Individuals</button>
+            <button data-metric="pacs">PACs</button>
+            <button data-metric="partyCommittees">Party committees</button>
+            <button data-metric="selfFunded">Self-funded</button>
+          </div>
+          <button id="back" hidden>Back to parties</button>
+        </div>
+
+        <div class="chart-wrap">
+          <canvas id="FECChart"></canvas>
+        </div>
+      </section>
+
+      <section class="story">
+        <p>
+          The 25 top-fundraising Senate candidates of 2024 raised more than $1.1
+          billion combined, with Democrats bringing in about $784 million, more
+          than double the roughly $341 million raised by Republicans. Click
+          either party's bar to see its candidates ranked, and use the buttons
+          above the chart to switch between total funds and each source of
+          money: individual donors, PACs, party committees, and candidates' own
+          wealth. The breakdown shows that money did not guarantee a win.
+          Sherrod Brown, Colin Allred, and Jon Tester were the race's three
+          biggest fundraisers, and all three lost. It also shows how far
+          personal fortunes can go: David Trone spent $62.9 million of his own
+          money, nearly all of the Democrats' self-funding in this group, and
+          still lost his primary, while Republicans Rick Scott and Eric Hovde
+          each put in more than $20 million of their own. Comparing sources
+          reveals which candidates were powered by grassroots donors and which
+          leaned on PACs or their own bank accounts.
+        </p>
+        <p class="source">
+          Source: Federal Election Commission, 2023-2024 candidate summary data.
+        </p>
+      </section>
+    </main>
+
+    <script src="chart.js"></script>
+  </body>
+</html>
