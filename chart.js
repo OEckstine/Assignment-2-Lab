@@ -1,3 +1,4 @@
+// Top 25 fundraising Senate candidates, 2024 cycle
 const FECData = [
   {
     name: "Sherrod Brown",
@@ -303,6 +304,8 @@ const FECData = [
 
 const colors = { DEM: "#2E5EAA", REP: "#C8102E" };
 const partyNames = { DEM: "Democratic", REP: "Republican" };
+
+//formats raw dollars as millions so it's easier to read
 const fmt = (v) => "$" + (v / 1e6).toFixed(1) + "M";
 
 let metric = "totalRaised";
@@ -310,6 +313,8 @@ let party = null;
 
 const metricToggle = document.getElementById("metricToggle");
 const backButton = document.getElementById("back");
+
+//chart setup
 
 const chart = new Chart(document.getElementById("FECChart"), {
   type: "bar",
@@ -330,9 +335,15 @@ const chart = new Chart(document.getElementById("FECChart"), {
         padding: { bottom: 12 },
         backgroundColor: "#E9E8EA",
       },
+
+    // show the hovered bar's value in millions instead of raw dollars
       tooltip: { callbacks: { label: (ctx) => fmt(ctx.raw) } },
     },
+    
+    // Format y-axis tick labels in millions
     scales: { y: { ticks: { callback: fmt } } },
+
+    // els holds the clicked bar index 0 is Democrats, index 1 is Republicans
     onClick: (e, els) => {
       if (!party && els.length) {
         party = els[0].index === 0 ? "DEM" : "REP";
@@ -353,6 +364,9 @@ function update() {
     chart.data.datasets[0].backgroundColor = [colors.DEM, colors.REP];
     chart.options.plugins.title.text = `${label} by Party, 2024 Senate Races`;
   } else {
+
+    // party view is that party's candidates ranked highest to lowest by the metric
+
     const rows = FECData.filter((d) => d.party === party).sort(
       (a, b) => b[metric] - a[metric],
     );
@@ -362,11 +376,15 @@ function update() {
     chart.data.datasets[0].backgroundColor = colors[party];
     chart.options.plugins.title.text = `${label}: ${partyNames[party]} Candidates, 2024 Senate Races`;
   }
-
+  
+  //back button
   backButton.hidden = !party;
   chart.options.plugins.subtitle.display = !party;
   chart.update();
 }
+
+//metric toggle takes one listener on the container handles all five buttons 
+//moves the active class to the clicked button, stores its metric, and redraws
 
 metricToggle.addEventListener("click", (e) => {
   const btn = e.target.closest("button");
