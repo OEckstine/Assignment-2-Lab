@@ -18,6 +18,7 @@ body {
   color: var(--ink);
   font-family: "Inter", system-ui, sans-serif;
 }
+/* navy block at the top makes it so the image looks to lay on top */
 
 .hero {
   background: linear-gradient(var(--navy) 0 62%, transparent 62%);
@@ -25,6 +26,8 @@ body {
   text-align: center;
   padding: 3rem 1.5rem 0;
 }
+
+/* main heading */
 
 .hero h1 {
   margin: 0;
@@ -46,6 +49,9 @@ body {
   font-size: clamp(1.5rem, 5vw, 4rem);
   line-height: 1.1;
 }
+
+/* horizontal lines on either side of the subtitle text. flex: 1 stretches each line to fill the remaining space;
+   currentColor matches the text color */
 
 .subtitle::before,
 .subtitle::after {
@@ -99,6 +105,8 @@ main {
   gap: 12px;
   margin-bottom: 16px;
 }
+
+/* toggle styling/pill looking container */
 
 .toggle {
   display: inline-flex;
@@ -157,6 +165,8 @@ main {
   position: relative;
   height: 560px;
 }
+
+/* styling for text at the bottom */
 
 .story {
   max-width: 70ch;
