@@ -354,7 +354,7 @@ const chart = new Chart(document.getElementById("FECChart"), {
 });
 
 function update() {
-  const label = metricToggle.querySelector(".active").textContent;
+  const label = metricToggle.querySelector(".active").textContent.trim();
   if (!party) {
     const sum = (p) =>
       FECData.filter((d) => d.party === p).reduce((s, d) => s + d[metric], 0);
